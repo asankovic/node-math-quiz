@@ -1,0 +1,26 @@
+{
+  "name": "math-quiz",
+  "version": "1.0.0",
+  "description": "Simple CLI math quiz app.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --env-file=.env.dev ./app.js"
+  },
+  "keywords": [
+    "math",
+    "quiz"
+  ],
+  "author": "Alen Sankovic",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "eslint": "^9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "globals": "^15.2.0",
+    "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "events": "^3.3.0"
+  }
+}
