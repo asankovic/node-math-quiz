@@ -28,14 +28,13 @@ function getParameters() {
     "--questions-file",
     process.env.QUESTIONS_FILE,
   );
-  const shuffle = getArgument("--shuffle", process.env.SHUFFLE);
+  const shuffle = asBoolean(getArgument("--shuffle", process.env.SHUFFLE));
   const timeLimit = validateAndConvertTimeLimit(
     getArgument("--time-limit", process.env.TIME_LIMIT),
   );
 
-  const generate = getArgument(
-    "--generate-questions",
-    process.env.GENERATE_QUESTIONS,
+  const generate = asBoolean(
+    getArgument("--generate-questions", process.env.GENERATE_QUESTIONS),
   );
   const level = getArgument("--level", process.env.LEVEL);
   const quantity = getArgument("--quantity", process.env.QUANTITY);
@@ -64,6 +63,10 @@ function getArgument(name, defaultValue) {
   }
 
   return process.argv[index + 1];
+}
+
+function asBoolean(value) {
+  return value === "true";
 }
 
 function validateAndConvertTimeLimit(timeLimit) {

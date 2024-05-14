@@ -27,7 +27,9 @@ function isStructureValid(entry, structure) {
 
   structure.forEach((field) => {
     if (entry[field] === undefined) {
-      console.warn(`Missing field ${field} in entry ${JSON.stringify(entry)}`);
+      console.warn(
+        `Missing field ${field} in entry ${JSON.stringify(entry)}, skipping it!`,
+      );
       valid = false;
     }
   });

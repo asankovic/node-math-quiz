@@ -4,7 +4,7 @@
   "description": "Simple CLI math quiz app.",
   "main": "app.js",
   "scripts": {
-    "dev": "node --env-file=.env.dev ./app.js"
+    "start": "node --env-file=.env ./src/app.js"
   },
   "keywords": [
     "math",

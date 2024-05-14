@@ -7,14 +7,14 @@ const operations = {
   MODULUS: "%",
 };
 
-function getQuestions(options) {
+async function getQuestions(options) {
   const { questionsFile, structure, generate } = options;
 
   if (generate) {
     return generateQuestions(options);
   }
 
-  return readStructure(questionsFile, structure);
+  return await readStructure(questionsFile, structure);
 }
 
 function generateQuestions(options) {

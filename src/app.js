@@ -2,31 +2,23 @@ const { getReadlineInterface, getParameters } = require("./userInterface");
 const { shuffleIntoNew, setAbortableTimer, logOrRetrhow } = require("./utils");
 const { askQuestions, getQuestions } = require("./questions");
 
-(async () => {
-  console.log("Welcome to the math quiz!");
-
-  await orchestrateQuiz();
-
-  console.log("Thanks for playing, bye!");
-})();
-
 async function orchestrateQuiz() {
-  const rl = getReadlineInterface();
-  const {
-    questionsFile,
-    shuffle,
-    structure,
-    timeLimit,
-    generate,
-    level,
-    quantity,
-  } = getParameters();
-
-  //TODO: add help (-h) and retest
-  await rl.question("Press enter when you want to see the questions...");
-
   try {
-    const sourceQuestions = getQuestions({
+    const rl = getReadlineInterface();
+    const {
+      questionsFile,
+      shuffle,
+      structure,
+      timeLimit,
+      generate,
+      level,
+      quantity,
+    } = getParameters();
+
+    console.log("Welcome to the math quiz!");
+    await rl.question("Press enter when you want to see the questions...");
+
+    const sourceQuestions = await getQuestions({
       questionsFile,
       structure,
       generate,
@@ -42,6 +34,7 @@ async function orchestrateQuiz() {
       again = (await rl.question("Do you want to play again? (y/n)\n")) === "y";
     }
 
+    console.log("Thanks for playing, bye!");
     process.exit(0);
   } catch (error) {
     console.error(
@@ -77,3 +70,7 @@ async function startRound(questions, timeLimit) {
     `You got ${parameters.correctCounter} correct out of ${questions.length}`,
   );
 }
+
+(async () => {
+  await orchestrateQuiz();
+})();
